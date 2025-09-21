@@ -2,7 +2,7 @@ import pygame
 
 pygame.init()
 
-
+mode_verif = 0
 screen = pygame.display.set_mode((1080,720))
 
 clock = pygame.time.Clock()
@@ -23,57 +23,31 @@ while True:
             pygame.quit()
             raise SystemExit
 
+        
+        if event.type == pygame.MOUSEMOTION:
+
+            if mode_verif == 0:
+                x, y = event.pos 
+
+            else:
+                pass
+
+
         if event.type == pygame.KEYDOWN:
 
-
-            if event.key == pygame.K_d:
-
-                x = x + 5
-    
-
-            elif event.key == pygame.K_q:
-
-                x = x - 5
-
-            elif event.key == pygame.K_s:
-
-                y = y + 5
-
-
-            elif event.key == pygame.K_z:
-
-                y = y - 5
-
-            elif event.key == pygame.K_m:
-                
+            if event.key == pygame.K_m:
                 
 
-                if secret == 1:
-                    secret=0
+                if mode_verif == 1:
+                    mode_verif=0
                 else:
-                    secret=1
+                    mode_verif=1
 
 
-        elif event.type == pygame.KEYUP:
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:
+                x, y = event.pos
 
-
-            if event.key == pygame.K_d:
-
-                x = x + 5
-    
-
-            elif event.key == pygame.K_q:
-
-                x = x - 5
-
-            elif event.key == pygame.K_s:
-
-                y = y + 5
-
-
-            elif event.key == pygame.K_z:
-
-                y = y - 5
 
         if secret == 1:
             screen.fill("black") 
