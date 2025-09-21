@@ -2,18 +2,19 @@ import pygame
 
 pygame.init()
 
-
-screen = pygame.display.set_mode((1080,720))
+mode_verif = 1
+screen = pygame.display.set_mode((1366,763))
 
 clock = pygame.time.Clock()
-couleur_rond = (255, 255, 255)
+couleur_rond = (0, 0, 0)
 x = 400
 y = 300
 
-secret = 0
+circle_taille = 15
 
-screen.fill("black") 
-pygame.draw.circle(screen, couleur_rond, (x, y), 30)
+
+screen.fill("white") 
+
 
 
 while True:
@@ -23,65 +24,49 @@ while True:
             pygame.quit()
             raise SystemExit
 
+        
+        if event.type == pygame.MOUSEMOTION and mode_verif == 0:
+
+           
+            x, y = event.pos 
+
+        else:
+            pass
+
+
         if event.type == pygame.KEYDOWN:
 
-
-            if event.key == pygame.K_d:
-
-                x = x + 5
-    
-
-            elif event.key == pygame.K_q:
-
-                x = x - 5
-
-            elif event.key == pygame.K_s:
-
-                y = y + 5
-
-
-            elif event.key == pygame.K_z:
-
-                y = y - 5
-
-            elif event.key == pygame.K_m:
-                
+            if event.key == pygame.K_m:
                 
 
-                if secret == 1:
-                    secret=0
+                if mode_verif == 1:
+                    mode_verif=0
                 else:
-                    secret=1
+                    mode_verif=1
+
+            elif event.key == pygame.K_6:
+                circle_taille = circle_taille - 5
+            
+            elif event.key == pygame.K_EQUALS:
+                circle_taille = circle_taille + 5
+
+            elif event.key == pygame.K_r:
+                screen.fill("black") 
+
+                
+
+        if pygame.mouse.get_pressed()[0]:
+            
+            x, y = pygame.mouse.get_pos()    
 
 
-        elif event.type == pygame.KEYUP:
 
+        
+        
 
-            if event.key == pygame.K_d:
-
-                x = x + 5
-    
-
-            elif event.key == pygame.K_q:
-
-                x = x - 5
-
-            elif event.key == pygame.K_s:
-
-                y = y + 5
-
-
-            elif event.key == pygame.K_z:
-
-                y = y - 5
-
-        if secret == 1:
-            screen.fill("black") 
-
-        pygame.draw.circle(screen, couleur_rond, (x, y), 30)
+        pygame.draw.circle(screen, couleur_rond, (x, y), circle_taille)
 
 
 
     pygame.display.flip() 
-    clock.tick(60)      
-
+    clock.tick(60000)      
