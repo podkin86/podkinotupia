@@ -10,7 +10,7 @@ couleur_rond = (0, 0, 0)
 x = 400
 y = 300
 
-circle_taille = 15
+circle_taille = 150
 
 
 screen.fill("white") 
@@ -36,7 +36,7 @@ while True:
 
         if event.type == pygame.KEYDOWN:
 
-            if event.key == pygame.K_m:
+            if event.key == pygame.K_a:
                 
 
                 if mode_verif == 1:
@@ -45,10 +45,12 @@ while True:
                     mode_verif=1
 
             elif event.key == pygame.K_6:
-                circle_taille = circle_taille - 5
+                if circle_taille > 5:
+                    circle_taille = circle_taille - 5
             
             elif event.key == pygame.K_EQUALS:
-                circle_taille = circle_taille + 5
+                if circle_taille < 146:
+                    circle_taille = circle_taille + 5
 
             elif event.key == pygame.K_r:
                 screen.fill("black") 
