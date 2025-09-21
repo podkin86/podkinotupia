@@ -85,4 +85,4 @@ while True:
     pygame.display.flip() 
     clock.tick(60)      
 
-    tests
+input = 0
