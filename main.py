@@ -2,18 +2,18 @@ import pygame
 
 pygame.init()
 
-mode_verif = 0
-screen = pygame.display.set_mode((1080,720))
+mode_verif = 1
+screen = pygame.display.set_mode((1366,763))
 
 clock = pygame.time.Clock()
-couleur_rond = (255, 255, 255)
+couleur_rond = (0, 0, 0)
 x = 400
 y = 300
 
-circle_taille = 30
-secret = 0
+circle_taille = 15
 
-screen.fill("black") 
+
+screen.fill("white") 
 
 
 
@@ -25,13 +25,13 @@ while True:
             raise SystemExit
 
         
-        if event.type == pygame.MOUSEMOTION:
+        if event.type == pygame.MOUSEMOTION and mode_verif == 0:
 
-            if mode_verif == 0:
-                x, y = event.pos 
+           
+            x, y = event.pos 
 
-            else:
-                pass
+        else:
+            pass
 
 
         if event.type == pygame.KEYDOWN:
@@ -50,19 +50,23 @@ while True:
             elif event.key == pygame.K_EQUALS:
                 circle_taille = circle_taille + 5
 
+            elif event.key == pygame.K_r:
+                screen.fill("black") 
+
                 
 
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            if event.button == 1:
-                x, y = event.pos
+        if pygame.mouse.get_pressed()[0]:
+            
+            x, y = pygame.mouse.get_pos()    
 
 
-        if secret == 1:
-            screen.fill("black") 
+
+        
+        
 
         pygame.draw.circle(screen, couleur_rond, (x, y), circle_taille)
 
 
 
     pygame.display.flip() 
-    clock.tick(60)      
+    clock.tick(60000)      
