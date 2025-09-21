@@ -10,10 +10,11 @@ couleur_rond = (255, 255, 255)
 x = 400
 y = 300
 
+circle_taille = 30
 secret = 0
 
 screen.fill("black") 
-pygame.draw.circle(screen, couleur_rond, (x, y), 30)
+
 
 
 while True:
@@ -43,6 +44,13 @@ while True:
                 else:
                     mode_verif=1
 
+            elif event.key == pygame.K_6:
+                circle_taille = circle_taille - 5
+            
+            elif event.key == pygame.K_EQUALS:
+                circle_taille = circle_taille + 5
+
+                
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
@@ -52,7 +60,7 @@ while True:
         if secret == 1:
             screen.fill("black") 
 
-        pygame.draw.circle(screen, couleur_rond, (x, y), 30)
+        pygame.draw.circle(screen, couleur_rond, (x, y), circle_taille)
 
 
 
