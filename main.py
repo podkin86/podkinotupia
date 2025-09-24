@@ -1,19 +1,19 @@
 import pygame
 
 pygame.init()
-
+color_screen = "white"
 mode_verif = 1
 screen = pygame.display.set_mode((1366,763))
-
+g_verif = 1
 clock = pygame.time.Clock()
-couleur_rond = (0, 0, 0)
+color_circle = (0, 0, 0)
 x = 400
 y = 300
 
-circle_taille = 150
+circle_taille = 25
 
 
-screen.fill("white") 
+screen.fill(color_screen) 
 
 
 
@@ -29,6 +29,7 @@ while True:
 
            
             x, y = event.pos 
+            pygame.draw.circle(screen, color_circle, (x, y), circle_taille)
 
         else:
             pass
@@ -53,8 +54,18 @@ while True:
                     circle_taille = circle_taille + 5
 
             elif event.key == pygame.K_r:
-                screen.fill("black") 
+                screen.fill(color_screen) 
+            
+            elif event.key == pygame.K_g:
+                if g_verif == 1:
+                    color_circle = (255, 255, 255)
 
+                    g_verif = 0
+                else:
+                    color_circle = (0, 0, 0)
+                    g_verif = 1
+                    
+    
                 
 
         if pygame.mouse.get_pressed()[0]:
@@ -66,7 +77,7 @@ while True:
         
         
 
-        pygame.draw.circle(screen, couleur_rond, (x, y), circle_taille)
+            pygame.draw.circle(screen, color_circle, (x, y), circle_taille)
 
 
 
